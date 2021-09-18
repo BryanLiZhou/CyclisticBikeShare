@@ -81,19 +81,6 @@ all_trips %>% mutate(start_station_id = replace(start_station_id, start_station_
 
 all_trips %>% mutate(end_station_id = replace(end_station_id, end_station_id =="end_station_id", NA))
 
-
-# fill in the start_station_name, start_station_id, end_station_id, and end_station_name with their respective values
-
-all_trips_2020 <- all_trips_2020 %>% arrange(start_station_name, .by_group = TRUE) %>%  fill(start_station_id,
-                                                                                             .direction = "downup")
-
-
-all_trips_2020 <- all_trips_2020 %>% arrange(end_station_name, .by_group = TRUE) %>%  fill(end_station_id,
-                                                                                           .direction = "downup")
-
-all_trips_2020 <- all_trips_2020 %>% arrange(end_station_name, .by_group = TRUE) %>%  fill(end_station_name,
-                                                                                           .direction = "down")
-
 # Remove lat and long from the data frame
 all_trips <- all_trips %>% select(-c(start_lat, start_lng, end_lat, end_lng))
 
